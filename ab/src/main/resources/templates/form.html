@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.theamleaf.org">
+<head>
+<meta charset="UTF-8">
+<title>Creat a account</title>
+</head>
+<body>
+<h1> Creat a User Account</h1>
+
+<form th:action ="@{/out}" method ="post" th:object ="${user}"> 
+
+
+<table>
+                <tr>
+                    <td>Id:</td>
+                    <td><input type="text" th:field="*{id}" /></td>
+                    <td th:if="${#fields.hasErrors('id')}" th:errors="*{id}">Id Error</td>
+                </tr>
+                <tr>
+                    <td>Name:</td>
+                    <td><input type="text" th:field="*{name}" /></td>
+                    <td th:if="${#fields.hasErrors('name')}" th:errors="*{name}">Name Error</td>
+                </tr>
+          
+                 <tr>
+                    <td>E-mail:</td>
+                    <td><input type="email" th:field="*{email}" /></td>
+                    <td th:if="${#fields.hasErrors('email')}" th:errors="*{email}">E-mail Error</td>
+                </tr>
+                 <tr>
+                    <td>Password:</td>
+                    <td><input type="password" th:field="*{password}" /></td>
+                    <td th:if="${#fields.hasErrors('password')}" th:errors="*{password}">Password Error</td>
+                </tr>
+                <tr>
+                    <td><button type="submit">Save</button></td>
+                </tr>
+            </table>
+ </form>
+<form th:action="@{/goto}" method="post">
+<button type="submit">Loging Account</button>
+</form>
+</body>
+</html>

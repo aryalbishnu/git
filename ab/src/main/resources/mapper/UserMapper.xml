@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+  <mapper namespace="com.example.demo.mapper.UserMapper">
+  
+  <insert id="doinsert" >
+  INSERT INTO public.mytable(
+	id, name, email, password)
+	VALUES (#{id}, #{name}, #{email}, #{password});
+  </insert>
+  
+  <select id ="doselect" resultType ="com.example.demo.entity.Plus">
+     select * from public.mytable
+  ORDER BY id ASC;
+  </select>
+  
+  <select id="dologing" resultType="int">
+  select count(email) from public.mytable where email=#{email} and password=#{password}
+  </select>
+  
+  
+  <delete id="dodelete">
+   DELETE FROM    public.mytable  
+   WHERE id=#{id}  
+  </delete>
+  
+ <update id="doupdate">
+ UPDATE  mytable
+	SET name=#{name} ,email=#{email}, password=#{password}
+	WHERE id=#{id} 
+ </update>
+  
+  <select id="dosearch" resultType="com.example.demo.entity.Plus">
+		SELECT * from public.mytable 
+		<where>>
+		<if test="name !=''">
+		name =#{name}
+		</if>
+		</where>
+	</select>
+	
+	<select id="timeloging" resultType="int">
+	select count(id) from public.mytable where id=#{id} and name=#{name}
+	</select>
+	
+	<insert id="timeinsert">
+	INSERT INTO public.timerecord(
+	id, name, "inTime", "outTime")
+	VALUES (#{id}, #{name}, #{inTime}, #{outTime});
+	</insert>
+	
+	 <update id="timeupdate">
+  UPDATE timerecord
+  SET  "outTime"=#{outTime}
+  where id=#{id} and name=#{name}
+  </update>
+  
+  <select id="timeselect" resultType="com.example.demo.entity.Timejoin">
+  SELECT * from public.timerecord
+  </select>
+
+  </mapper>

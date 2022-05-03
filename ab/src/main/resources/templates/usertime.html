@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.theamleaf.org">
+<head>
+<meta charset="UTF-8">
+<title>Time format</title>
+</head>
+<body>
+<h1>please input and output</h1>
+
+<form th:action="@{/intime}" th:object="${time}" method="post">
+<p th:text="${msg}" />
+<p th:text="${ms}" />
+<input type="text" placeholder="enter a id....." name="id">
+<input type="text" placeholder="enter a name...." name="name">
+<button type="submit">出勤</button>
+</form>
+
+<form th:action="@{/outtime}" th:object="${time}" method="post">
+<p th:text="${mssg}" />
+<p th:text="${msgg}" />
+<input type="text" placeholder="enter a id....." name="id">
+<input type="text" placeholder="enter a name...." name="name">
+<button type="submit">退勤</button>
+</form>
+
+<form th:action="@{/detailby}" th:object="${user}" method="post">
+<button type="submit" style="background-color:blue">Record of Card</button>
+</form>
+
+</body>
+</html>

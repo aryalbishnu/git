@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.theamleaf.org">
+<head>
+<meta charset="UTF-8">
+<title>loging</title>
+</head>
+<body>
+<h1>Loging a user email and password</h1>
+<form th:action ="@{/log}" method ="post" th:object ="${user}"> 
+<p th:text="${msg}"></p>
+<p>E-mail:<input type="email" placeholder="enter a useremail" name="email"></p>
+
+<p>Password:<input type="password" placeholder="enter a password" name="password"></p>
+<button type ="submit">Loging</button>
+</form>
+<a href="/show">Creat a anothe user account</a>
+</body>
+</html>

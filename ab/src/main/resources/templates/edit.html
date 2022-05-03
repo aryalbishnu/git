@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="UTF-8">
+<title>Edit User</title>
+</head>
+<body>
+<h1> Edit a User List Of Customer</h1>
+
+<form th:action="@{/doedit}" th:object="${user}" method="post">
+<p th:text="|ID: *{id}|"></p><input type="hidden" th:field="*{id}" >
+<table>
+              
+                <tr>
+                    <td>Name:</td>
+                    <td><input type="text" th:field="*{name}" /></td>
+                    <td th:if="${#fields.hasErrors('name')}" th:errors="*{name}">UserName Error</td>
+                </tr>
+            
+                 <tr>
+                    <td>E-mail:</td>
+                    <td><input type="email" th:field="*{email}" /></td>
+                    <td th:if="${#fields.hasErrors('email')}" th:errors="*{email}">E-mail Error</td>
+                </tr>
+                 <tr>
+                    <td>Password:</td>
+                    <td><input type="password" th:field="*{password}" /></td>
+                    <td th:if="${#fields.hasErrors('password')}" th:errors="*{password}">Password Error</td>
+                </tr>
+                <tr>
+                    <td><button type="submit">Save</button></td>
+                </tr>
+            </table>
+ </form>
+</body>
+</html>

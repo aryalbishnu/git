@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.theamleaf.org">
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+</head>
+<body>
+<h1>Loging Success</h1>
+<form th:action="@{/tosearch}" th:object="${user}" method="post">
+<input type="text" placeholder="enter a name..." name="name">
+<button type="submit">Search</button>
+</form>
+
+<table >
+<tr>
+<th>Id</th>
+<th>Name</th>
+
+<th>E-mail</th>
+<th>Password</th>
+</tr>
+
+<tr th:each="list:${userlist}">
+	<td th:text="${list.id}"></td>
+	<td th:text="${list.name}"></td>
+	<td th:text="${list.email}" ></td>
+	<td th:text="${list.password}"></td>
+	
+		<td>
+<form th:action="@{/edit}"  method="post" th:object ="${user}">
+<input type="hidden" name="id" th:value="${list.id}"/>
+<input type="hidden" name="name" th:value="${list.name}"/>
+<input type="hidden" name="email" th:value="${list.email}"/>
+<input type="hidden" name="password" th:value="${list.password}"/>
+
+<input type="submit" value="修正" style="background-color:yellow"/>
+</form>
+</td>
+
+		<td>
+<form th:action="@{/delete}"  method="post" th:object ="${user}">
+<input type="hidden" name="id" th:value="${list.id}"/>
+<input type="hidden" name="name" th:value="${list.name}"/>
+<input type="hidden" name="email" th:value="${list.email}"/>
+<input type="hidden" name="password" th:value="${list.password}"/>
+
+<input type="submit" value="削除" onclick="if(!confirm ('do you want to delete')) {return false }" style="background-color:Red"/>
+</form>
+</td>
+	</tr>
+	</table>
+	
+	<form th:action="@{/doadd}" th:object="${user}" method="post">
+	<button style="background-color:blue">ADD</button>
+	</form>
+	
+	<form th:action="@{/doreturn}" th:object="${user}" method="post">
+	<button style="background-color:pink">Return</button>
+	</form>
+
+</body>
+</html>

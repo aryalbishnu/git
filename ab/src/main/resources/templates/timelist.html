@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.theamleaf.org">
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+</head>
+<body>
+<h1>List of User Time</h1>
+<table>
+<tr>
+<th>Id</th>
+<th>Name</th>
+<th>InTime</th>
+<th>OutTime</th>
+</tr>
+
+
+<tr th:each="list:${listuser}">
+	<td th:text="${list.id}"></td>
+	<td th:text="${list.name}"></td>
+	<td th:text="${list.inTime}" ></td>
+	<td th:text="${list.outTime}"></td>
+	
+		<td>
+<form th:action="@{/edit}"  method="post" th:object ="${time}">
+<input type="hidden" name="id" th:value="${list.id}"/>
+<input type="hidden" name="name" th:value="${list.name}"/>
+<input type="hidden" name="inTime" th:value="${list.inTime}"/>
+<input type="hidden" name="outTime" th:value="${list.outTime}"/>
+
+<input type="submit" value="修正" style="background-color:yellow"/>
+</form>
+</td>
+
+		<td>
+<form th:action="@{/delete}"  method="post" th:object ="${time}">
+<input type="hidden" name="id" th:value="${list.id}"/>
+<input type="hidden" name="name" th:value="${list.name}"/>
+<input type="hidden" name="inTime" th:value="${list.outTime}"/>
+<input type="hidden" name="outTime" th:value="${list.inTime}"/>
+
+<input type="submit" value="削除" onclick="if(!confirm ('do you want to delete')) {return false }" style="background-color:Red"/>
+</form>
+</td>
+	</tr>
+
+
+</table>
+
+</body>
+</html>

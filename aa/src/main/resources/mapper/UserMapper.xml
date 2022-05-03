@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+  <mapper namespace="com.example.demo.mapper.UserMapper">
+  <insert id="doinsert">
+  INSERT INTO public."user"(
+	id, name, email, password)
+	VALUES (#{id}, #{name}, #{email}, #{password})
+  </insert>
+  
+  <delete id="dodelete">
+  DELETE FROM public."user"
+	WHERE id=#{id}
+  </delete>
+  
+  <select id ="doselect" resultType ="com.example.demo.entity.Join">
+     select * from public.user
+  ORDER BY id ASC;
+  </select>
+  
+  <select id="dologing" resultType="int">
+  select count(email)  from public.user 
+  where email=#{email} and password=#{password}
+  
+  
+  </select>
+  
+  <update id="doupdate">
+  UPDATE public."user"
+	SET  name=#{name}, email=#{email}, password=#{password}
+	WHERE id=#{id}
+  </update>
+  
+   <select id="dosearch" resultType="com.example.demo.entity.Join">
+		SELECT * from public.user
+		<where>
+		<if test="name !=''">
+		name =#{name}
+		</if>
+		</where>
+	
+	</select>
+  </mapper>
