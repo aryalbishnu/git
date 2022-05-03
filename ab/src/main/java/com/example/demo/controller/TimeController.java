@@ -17,7 +17,7 @@ import com.example.demo.model.Time;
 import com.example.demo.model.User;
 
 @Controller
-public class TimeController {   //time
+public class TimeController {   //ti
 	@Autowired
 	UserMapper userMapper;
 	
