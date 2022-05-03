@@ -21,7 +21,7 @@ public class DemoController {
 	@Autowired
 	UserMapper userMapper;
 	@GetMapping("/web")
-	public String formby(Model model) {   //helo
+	public String formby(Model model) {   //he
 		model.addAttribute("user", new User());
 		return "form";
 	}
